@@ -51,7 +51,7 @@ HIBIKI_ROM=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
 # Replace `config.plist` with the appropriate generated serials
 plutil -replace PlatformInfo.Generic.SystemSerialNumber -string ${HIBIKI_SERIAL_ARRAY[0]} EFI/OC/config.plist
 plutil -replace PlatformInfo.Generic.MLB -string ${HIBIKI_SERIAL_ARRAY[1]} EFI/OC/config.plist
-plutil -replace PlatformInfo.Generic.SystemUUID -string $UUIDGEN EFI/OC/config.plist
+plutil -replace PlatformInfo.Generic.SystemUUID -string $HIBIKI_UUIDGEN EFI/OC/config.plist
 plutil -replace PlatformInfo.Generic.ROM -data $HIBIKI_ROM EFI/OC/config.plist
 ```
 
