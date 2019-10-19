@@ -5,8 +5,8 @@
 - [OpenCore](https://github.com/acidanthera/OpenCorePkg/releases) Bootloader
 
 ## Prepared by [Mild Ideas](https://www.mildideas.com) for a Hackintosh video build using these parts:
-* Intel i9900K
-* ASRock Z390 Phantom Gaming-ITX/AC w/ TB3 port
+* Intel Core i9-9900K
+* ASRock Z390 Phantom Gaming-ITX/AC w/ TB3 port on `v4.20` bios firmware
 * Powercolor Radeon VII
 * Dell DW1560 (BCM94352Z) Wifi/BT
 * Intel I219V GbE NIC
@@ -22,7 +22,7 @@ _The rest of the Hibiki parts that don't affect this configuration at all:_
 
 ## How to set up your macOS installer USB drive and OpenCore bootloader
 
-This guide assumes you're on a Mac, you have `git` installed, and you have a 16GB+ USB drive handy
+This guide assumes you're on a Mac, you have `git` installed, and you have a 16GB+ USB drive handy.
 
 * Open `Terminal.app`, located in `/Applications/Utilities/` (almost everything in this guide requires copy/pasting terminal commands)
 * Download macOS installer from the App Store
@@ -83,6 +83,7 @@ plutil -lint EFI/OC/config.plist
 ```
 * __TODO__: Add additional kexts for Dell DW1560 (BCM94352Z) Wifi/BT card, maybe as a post macOS-install step cause we need access to `/Library/Extensions`?
 * __TODO__: Carry over additional modifications to `config.plist` since
+* __TODO__: Suggest how to configure bios settings?
 * (Optional) Additional `config.plist` modifications per my preferences
 ```
 # Clear out `ScanPolicy` so you can select a partition upon boot
