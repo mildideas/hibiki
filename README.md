@@ -1,6 +1,15 @@
 # hibiki
 
 * Download macOS installer from the App Store
+```
+# Catalina:
+/usr/bin/open "macappstores://itunes.apple.com/app/id1466841314"
+```
+```
+# Mojave:
+/usr/bin/open "macappstores://itunes.apple.com/app/id1398502828"
+```
+
 * Format USB Drive in Disk Utility to GUID
 * Create macOS installer USB drive:
 ```
