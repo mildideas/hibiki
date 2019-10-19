@@ -53,6 +53,10 @@ plutil -replace PlatformInfo.Generic.SystemSerialNumber -string ${HIBIKI_SERIAL_
 plutil -replace PlatformInfo.Generic.MLB -string ${HIBIKI_SERIAL_ARRAY[1]} EFI/OC/config.plist
 plutil -replace PlatformInfo.Generic.SystemUUID -string $HIBIKI_UUIDGEN EFI/OC/config.plist
 plutil -replace PlatformInfo.Generic.ROM -data $HIBIKI_ROM EFI/OC/config.plist
+# Lint the `config.plist` to make sure we didn't mess anything up
+plutil -lint EFI/OC/config.plist
+# Print out the new serials from PlatformInfo.Generic
+
 ```
 
 * (Optional) Additional `config.plist` modifications per my preferences
@@ -60,7 +64,7 @@ plutil -replace PlatformInfo.Generic.ROM -data $HIBIKI_ROM EFI/OC/config.plist
 # Clear out `ScanPolicy` so you can select a partition upon boot
 plutil -replace Misc.Security.ScanPolicy -integer '0' EFI/OC/config.plist
 # Other minor cleanups for my specific setup
-sed -i 's/agdpmod=pikera//g' EFI/OC/config.plist 
+plutil -replace NVRAM.Add.7C436110-AB2A-4BBB-A880-FE41995C9F82.boot-args -string 'dart=0 debug=0x100 keepsyms=1 darkwake=0 -v' EFI/OC/config.plist
 plutil -replace Misc.Boot.Resolution -string '3840x2160@32' EFI/OC/config.plist
 ```
 
