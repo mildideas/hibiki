@@ -13,10 +13,10 @@
 * Format USB Drive in Disk Utility to GUID
 * Create macOS installer USB drive:
 ```
-sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --nointeraction --downloadassets --volume /Volumes/USB Catalina/
+sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --nointeraction --downloadassets --volume /Volumes/Hibiki/
 ```
 * Open the EFI partition on the USB drive
-  * Use [MountEFI](https://github.com/corpnewt/MountEFI) and select the `USB Catalina` drive
+  * Use [MountEFI](https://github.com/corpnewt/MountEFI) and select the `Hibiki` drive
 ```
   git clone https://github.com/corpnewt/MountEFI
   cd MountEFI
