@@ -21,6 +21,9 @@ _The rest of the Hibiki parts that don't affect this configuration at all:_
 
 
 ## How to set up your macOS installer USB drive and OpenCore bootloader
+
+This guide assumes you're on a Mac, you have `git` installed, and you have a 16GB+ USB drive handy
+
 * Open `Terminal.app`, located in `/Applications/Utilities/` (almost everything in this guide requires copy/pasting terminal commands)
 * Download macOS installer from the App Store
 ```
