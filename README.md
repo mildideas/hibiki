@@ -1,5 +1,27 @@
-# hibiki
+# Hibiki
 
+## General software configuration:
+- macOS Catalina 10.15.x
+- [OpenCore](https://github.com/acidanthera/OpenCorePkg/releases) Bootloader
+
+## Prepared by [Mild Ideas](https://www.mildideas.com) for a Hackintosh video build using these parts:
+* Intel i9900K
+* ASRock Z390 Phantom Gaming-ITX/AC w/ TB3 port
+* Powercolor Radeon VII
+* Dell DW1560 (BCM94352Z) Wifi/BT
+* Intel I219V GbE NIC
+* Realtek ALC1220
+
+_The rest of the Hibiki parts that don't affect this configuration at all:_
+* 64GB (2x32GB) Corsair Vengeance DDR4-3000 Memory
+* (2) 2TB Adata XPG 8200 Pro NVMe M.2 SSDs
+* (1) 500MB Samsung 850 Pro SATA SSD
+* Dancase A4-SFX v4 ITX case
+* Corsair SF600
+
+
+## How to set up your macOS installer USB drive and OpenCore bootloader
+* Open `Terminal.app`, located in `/Applications/Utilities/` (almost everything in this guide requires copy/pasting terminal commands)
 * Download macOS installer from the App Store
 ```
 # Catalina:
@@ -55,10 +77,9 @@ plutil -replace PlatformInfo.Generic.SystemUUID -string $HIBIKI_UUIDGEN EFI/OC/c
 plutil -replace PlatformInfo.Generic.ROM -data $HIBIKI_ROM EFI/OC/config.plist
 # Lint the `config.plist` to make sure we didn't mess anything up
 plutil -lint EFI/OC/config.plist
-# Print out the new serials from PlatformInfo.Generic
-
 ```
-
+* __TODO__: Add additional kexts for Dell DW1560 (BCM94352Z) Wifi/BT card, maybe as a post macOS-install step cause we need access to `/Library/Extensions`?
+* __TODO__: Carry over additional modifications to `config.plist` since
 * (Optional) Additional `config.plist` modifications per my preferences
 ```
 # Clear out `ScanPolicy` so you can select a partition upon boot
