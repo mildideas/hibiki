@@ -63,7 +63,7 @@ plutil -replace NVRAM.Add.7C436110-AB2A-4BBB-A880-FE41995C9F82.prev-lang:kbd -da
 ```
 # Download `macserial` and extract it
 mkdir -p hibiki_tmp
-curl https://github.com/acidanthera/MacInfoPkg/releases/download/2.0.8/macinfo-2.0.8-mac.zip -LO && unzip macinfo-2.0.8-mac.zip -d hibiki_tmp
+curl https://github.com/acidanthera/MacInfoPkg/releases/download/2.0.8/macinfo-2.0.8-mac.zip -LO && unzip macinfo-2.0.8-mac.zip -d hibiki_tmp && rm macinfo-2.0.8-mac.zip
 chmod a+x ./hibiki_tmp/macserial
 # Generate SystemSerialNumber and MLB, takes the first output of `macserial`
 HIBIKI_SERIAL=$(./hibiki_tmp/macserial -m iMac19,1 | head -n1)
@@ -81,9 +81,6 @@ plutil -replace PlatformInfo.Generic.ROM -data $HIBIKI_ROM EFI/OC/config.plist
 # Lint the `config.plist` to make sure we didn't mess anything up
 plutil -lint EFI/OC/config.plist
 ```
-* __TODO__: Add additional kexts for Dell DW1560 (BCM94352Z) Wifi/BT card, maybe as a post macOS-install step cause we need access to `/Library/Extensions`?
-* __TODO__: Carry over additional modifications to `config.plist` since
-* __TODO__: Suggest how to configure bios settings?
 * (Optional) Additional `config.plist` modifications per my preferences
 ```
 # Clear out `ScanPolicy` so you can select a partition upon boot
@@ -92,5 +89,8 @@ plutil -replace Misc.Security.ScanPolicy -integer '0' EFI/OC/config.plist
 plutil -replace NVRAM.Add.7C436110-AB2A-4BBB-A880-FE41995C9F82.boot-args -string 'dart=0 debug=0x100 keepsyms=1 darkwake=0 -v' EFI/OC/config.plist
 plutil -replace Misc.Boot.Resolution -string '3840x2160@32' EFI/OC/config.plist
 ```
-
 * (Optional for future maintenance) Because we pulled the EFI from an active modder's git repo, it's possible to commit your current changes and whenever you want to refresh what [`fangf2018`](https://github.com/fangf2018/ASRock-Z390-Phantom-ITX-OpenCore-Hackintosh) has been up to by `git fetch origin && git rebase origin master`
+
+* __TODO__: Add additional kexts for Dell DW1560 (BCM94352Z) Wifi/BT card, maybe as a post macOS-install step cause we need access to `/Library/Extensions`?
+* __TODO__: Carry over additional modifications to `config.plist` since
+* __TODO__: Suggest how to configure bios settings?
